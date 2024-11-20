@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dependent Dropdown</title>
+</head>
+<body>
+    <h2>Dependent Dropdown Example</h2>
+
+    <!-- First dropdown: Main category -->
+    <label for="category">Select Category:</label>
+    <select id="category" onchange="populateSubOptions()">
+        <option value="">--Select Category--</option>
+        <option value="VFD Models">VFD Models</option>
+        <option value="Credence Solar Panels">Credence Solar Panels</option>
+        <option value="Asani Models">Asani Models</option>
+        <option value="All Product Names">All Product Names</option>
+        <option value="Veichi Models">Veichi Models</option>
+    </select>
+
+    <!-- Second dropdown: Sub-options -->
+    <label for="subcategory">Select Option:</label>
+    <select id="subcategory">
+        <option value="">--Select Option--</option>
+    </select>
+
+    <script>
+        // Data for dropdown options
+        const data = {
+            "VFD Models": [
+                "CG Solar 3Hp VSR23-9P5",
+                "CG Solar 5Hp VSRE48-009",
+                "CG Solar 7.5Hp VSR48-013",
+                "CG Solar 10Hp VSR48-017",
+                "CG Solar 15Hp VSR48-024",
+                "CG Solar 20Hp VSR48-032",
+                "CG Solar 25Hp VSR48-038",
+                "CG Solar 30Hp VSR48-045",
+                "CG Solar 40Hp VSR48-060",
+                "CG Solar 50Hp VSR48-075",
+                "CG Solar 75Hp VSR48-112",
+                "CG Solar 100Hp VSR48-150",
+                "CG Solar 150Hp VSR48-210"
+            ],
+            "Credence Solar Panels": [
+                "CS-QB685-132",
+                "CSQB670-132",
+                "CS-QB725-132"
+            ],
+            "Asani Models": [
+                "ASB-M10-144-540"
+            ],
+            "All Product Names": [
+                "DCDB",
+                "ACDB",
+                "Net Meter",
+                "VFD Box",
+                "DC cable 4sqr mm",
+                "DC cable 6sqr mm",
+                "Lug 4Sqr mm",
+                "Lug 6Sqr mm",
+                "Lug 35 Sqr mm",
+                "MC4 connector",
+                "Y connecter",
+                "DC MCB 500v",
+                "DC MCB 800v",
+                "DC MCB 125A",
+                "AC Cable 4Sqr mm",
+                "AC Cable 2c X 4Sqr mm",
+                "Traminals",
+                "Tai cables",
+                "RMS",
+                "Earthing Rods",
+                "L.A Latu",
+                "Hardwere",
+                "Perlin",
+                "Rafter",
+                "U clamp",
+                "Z clamp"
+            ],
+            "Veichi Models": [
+                "Veichi 3Hp SD700-6ROD",
+                "Veichi 5Hp AG300-T/S2-004G",
+                "Veichi AG300-T3-011G/015P",
+                "Veichi AG300-T3-018G/022P"
+            ]
+        };
+
+        // Function to populate the second dropdown based on the first dropdown selection
+        function populateSubOptions() {
+            const category = document.getElementById("category").value;
+            const subcategoryDropdown = document.getElementById("subcategory");
+
+            // Clear previous options
+            subcategoryDropdown.innerHTML = '<option value="">--Select Option--</option>';
+
+            // Populate new options
+            if (category && data[category]) {
+                data[category].forEach(option => {
+                    const newOption = document.createElement("option");
+                    newOption.value = option;
+                    newOption.textContent = option;
+                    subcategoryDropdown.appendChild(newOption);
+                });
+            }
+        }
+    </script>
+</body>
+</html>b
